@@ -14,6 +14,13 @@ class Shopping extends Component
         $simpan->harga_barang = $harga_barang;
         $simpan->save();
     }
+
+    public function destroy($idhapus)
+    {
+        $hapus =  keranjang::findOrFail($idhapus);
+        $hapus->delete();
+        $this->reset();
+    }
     public function render()
     {
         return view('livewire.shopping', [
